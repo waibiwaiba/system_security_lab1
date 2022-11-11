@@ -23,8 +23,9 @@ def login():
         if "#" not in i:
             detail = i.split(' ')
             print(detail)
-
-    return "登录信息"
+    print(type(infoList[1]))# string
+    print(infoList[1])
+    return infoList[1]
 
 
 def logGame(s):
@@ -77,8 +78,13 @@ def package():
     pass
 
 
-def dealGameManage(info):
-    print("处理info信息")
+
+
+def dealAuthority(info):
+    if info[3] == '1':
+        print("当前登录的用户权限不够，无法执行相应功能")
+        exit(1)
+
 
 if __name__ == '__main__':
     print("欢迎进入游戏管理系统")
@@ -91,9 +97,9 @@ if __name__ == '__main__':
         big()
     if x == '2':
         info = login()
-        dealLogManage(info)
+        dealAuthority(info)
         analyse()
     if x == '3':
         info = login()
-        dealPackageManage(info)
+        dealAuthority(info)
         package()
